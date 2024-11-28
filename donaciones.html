@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Capturas de pantalla - Argentumcraft</title>
+  <title>Donaciones - Argentumcraft</title>
   <style>
     body {
       margin: 0;
@@ -33,86 +33,41 @@
       margin: 0 15px;
     }
     .content {
+      text-align: center;
+      margin: 20px auto;
       padding: 20px;
+      max-width: 600px;
+      background-color: #222;
+      border-radius: 8px;
     }
-    .gallery {
+    .donation-options {
       display: flex;
-      flex-direction: column;
-      gap: 30px; /* Aumentamos el espacio entre las imágenes */
-      align-items: center;
-    }
-    .gallery img {
-      width: 90%;
-      max-width: 400px;
-      height: auto;
-      border: 2px solid white;
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-    .gallery .title {
-      color: #ccc;
-      text-align: center;
-      margin-top: 15px; /* Mayor espacio entre la imagen y el título */
-      font-size: 18px;
-      font-weight: bold; /* Hacemos el título un poco más llamativo */
-    }
-
-    /* Estilo del modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
+      flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
+      gap: 20px;
     }
-    .modal-content {
-      position: relative;
+    .donation-option {
+      background-color: #444;
+      padding: 15px;
+      border-radius: 8px;
       text-align: center;
-    }
-    .modal img {
-      width: 90%;
-      max-width: 800px;
-      height: auto;
-    }
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 40px;
       color: white;
+      width: 200px;
+    }
+    .donation-option h3 {
+      margin: 10px 0;
+    }
+    .donation-option button {
+      padding: 10px;
+      font-family: 'Press Start 2P', cursive;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
       cursor: pointer;
     }
-    .prev, .next {
-      position: absolute;
-      top: 50%;
-      font-size: 30px;
-      color: white;
-      text-decoration: none;
-      cursor: pointer;
-      z-index: 100;
-    }
-    .prev {
-      left: 10px;
-    }
-    .next {
-      right: 10px;
-    }
-    .modal:target {
-      display: flex;
-    }
-    /* Estilo del título dentro del modal */
-    .modal-title {
-      font-size: 24px;
-      color: #fff;
-      margin-bottom: 15px;
+    .donation-option button:hover {
+      background-color: #45a049;
     }
   </style>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap">
@@ -128,102 +83,42 @@
     </div>
   </div>
   <div class="content">
-    <h2>Capturas de pantalla</h2>
-    <div class="gallery">
-      <!-- Enlaces a las imágenes con id para modal -->
-      <div>
-        <a href="#img1"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/spawn.png" alt="Spawn"></a>
-        <div class="title">Spawn</div>
+    <h2>Donaciones</h2>
+    <p>Apoya el servidor y obtén monedas en el juego. ¡Gracias por ayudarnos a crecer!</p>
+    <div class="donation-options">
+      <div class="donation-option">
+        <h3>500 Coins</h3>
+        <p>$5 USD</p>
+        <form action="https://www.paypal.me/maxicf" method="post" target="_blank">
+          <input type="hidden" name="business" value="tu_correo@ejemplo.com">
+          <input type="hidden" name="item_name" value="500 Coins en Argentumcraft">
+          <input type="hidden" name="amount" value="5.00">
+          <input type="hidden" name="currency_code" value="USD">
+          <button type="submit">Donar</button>
+        </form>
       </div>
-      <div>
-        <a href="#img2"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menuprincipal.png" alt="Menu Principal"></a>
-        <div class="title">Menu Principal</div>
+      <div class="donation-option">
+        <h3>1000 Coins</h3>
+        <p>$10 USD</p>
+        <form action="https://www.paypal.com/donate" method="post" target="_blank">
+          <input type="hidden" name="business" value="tu_correo@ejemplo.com">
+          <input type="hidden" name="item_name" value="1000 Coins en Argentumcraft">
+          <input type="hidden" name="amount" value="10.00">
+          <input type="hidden" name="currency_code" value="USD">
+          <button type="submit">Donar</button>
+        </form>
       </div>
-      <div>
-        <a href="#img3"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menuhome.png" alt="Home"></a>
-        <div class="title">Home</div>
+      <div class="donation-option">
+        <h3>2500 Coins</h3>
+        <p>$25 USD</p>
+        <form action="https://www.paypal.com/donate" method="post" target="_blank">
+          <input type="hidden" name="business" value="tu_correo@ejemplo.com">
+          <input type="hidden" name="item_name" value="2500 Coins en Argentumcraft">
+          <input type="hidden" name="amount" value="25.00">
+          <input type="hidden" name="currency_code" value="USD">
+          <button type="submit">Donar</button>
+        </form>
       </div>
-      <div>
-        <a href="#img4"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menubags.png" alt="Menu Bags"></a>
-        <div class="title">Menu Bags</div>
-      </div>
-      <div>
-        <a href="#img5"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menuguia.png" alt="Menu Guía"></a>
-        <div class="title">Menu Guía</div>
-      </div>
-      <div>
-        <a href="#img6"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menuarmor.png" alt="Menu Armor"></a>
-        <div class="title">Menu Armor</div>
-      </div>
-      <div>
-        <a href="#img7"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menuskin.png" alt="Menu Skin"></a>
-        <div class="title">Menu Skin</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal para cada imagen -->
-  <div id="img1" class="modal">
-    <div class="modal-content">
-      <a href="#" class="close">&times;</a>
-      <a href="#img7" class="prev">&#60;</a>
-      <a href="#img2" class="next">&#62;</a>
-      <div class="modal-title">Spawn</div>
-      <img src="/home/max/.minetest/screenshots/spawn.png" alt="Spawn">
-    </div>
-  </div>
-  <div id="img2" class="modal">
-    <div class="modal-content">
-      <a href="#" class="close">&times;</a>
-      <a href="#img1" class="prev">&#60;</a>
-      <a href="#img3" class="next">&#62;</a>
-      <div class="modal-title">Menu Principal</div>
-      <img src="/home/max/.minetest/screenshots/menuprincipal.png" alt="Menu Principal">
-    </div>
-  </div>
-  <div id="img3" class="modal">
-    <div class="modal-content">
-      <a href="#" class="close">&times;</a>
-      <a href="#img2" class="prev">&#60;</a>
-      <a href="#img4" class="next">&#62;</a>
-      <div class="modal-title">Home</div>
-      <img src="/home/max/.minetest/screenshots/menuhome.png" alt="Home">
-    </div>
-  </div>
-  <div id="img4" class="modal">
-    <div class="modal-content">
-      <a href="#" class="close">&times;</a>
-      <a href="#img3" class="prev">&#60;</a>
-      <a href="#img5" class="next">&#62;</a>
-      <div class="modal-title">Menu Bags</div>
-      <img src="/home/max/.minetest/screenshots/menubags.png" alt="Menu Bags">
-    </div>
-  </div>
-  <div id="img5" class="modal">
-    <div class="modal-content">
-      <a href="#" class="close">&times;</a>
-      <a href="#img4" class="prev">&#60;</a>
-      <a href="#img6" class="next">&#62;</a>
-      <div class="modal-title">Menu Guía</div>
-      <img src="/home/max/.minetest/screenshots/menuguia.png" alt="Menu Guía">
-    </div>
-  </div>
-  <div id="img6" class="modal">
-    <div class="modal-content">
-      <a href="#" class="close">&times;</a>
-      <a href="#img5" class="prev">&#60;</a>
-      <a href="#img7" class="next">&#62;</a>
-      <div class="modal-title">Menu Armor</div>
-      <img src="/home/max/.minetest/screenshots/menuarmor.png" alt="Menu Armor">
-    </div>
-  </div>
-  <div id="img7" class="modal">
-    <div class="modal-content">
-      <a href="#" class="close">&times;</a>
-      <a href="#img6" class="prev">&#60;</a>
-      <a href="#img1" class="next">&#62;</a>
-      <div class="modal-title">Menu Skin</div>
-      <img src="/home/max/.minetest/screenshots/menuskin.png" alt="Menu Skin">
     </div>
   </div>
 </body>
