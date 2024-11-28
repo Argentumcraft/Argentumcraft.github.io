@@ -32,6 +32,88 @@
       text-decoration: none;
       margin: 0 15px;
     }
+    .content {
+      padding: 20px;
+    }
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 30px; /* Aumentamos el espacio entre las imágenes */
+      align-items: center;
+    }
+    .gallery img {
+      width: 90%;
+      max-width: 400px;
+      height: auto;
+      border: 2px solid white;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .gallery .title {
+      color: #ccc;
+      text-align: center;
+      margin-top: 15px; /* Mayor espacio entre la imagen y el título */
+      font-size: 18px;
+      font-weight: bold; /* Hacemos el título un poco más llamativo */
+    }
+
+    /* Estilo del modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      position: relative;
+      text-align: center;
+    }
+    .modal img {
+      width: 90%;
+      max-width: 800px;
+      height: auto;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      font-size: 30px;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      z-index: 100;
+    }
+    .prev {
+      left: 10px;
+    }
+    .next {
+      right: 10px;
+    }
+    .modal:target {
+      display: flex;
+    }
+    /* Estilo del título dentro del modal */
+    .modal-title {
+      font-size: 24px;
+      color: #fff;
+      margin-bottom: 15px;
+    }
   </style>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap">
 </head>
@@ -47,7 +129,102 @@
   </div>
   <div class="content">
     <h2>Capturas de pantalla</h2>
-    <!-- Contenido de capturas de pantalla aquí -->
+    <div class="gallery">
+      <!-- Enlaces a las imágenes con id para modal -->
+      <div>
+        <a href="#img1"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/spawn.png" alt="Spawn"></a>
+        <div class="title">Spawn</div>
+      </div>
+      <div>
+        <a href="#img2"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menuprincipal.png" alt="Menu Principal"></a>
+        <div class="title">Menu Principal</div>
+      </div>
+      <div>
+        <a href="#img3"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menuhome.png" alt="Home"></a>
+        <div class="title">Home</div>
+      </div>
+      <div>
+        <a href="#img4"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menubags.png" alt="Menu Bags"></a>
+        <div class="title">Menu Bags</div>
+      </div>
+      <div>
+        <a href="#img5"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menuguia.png" alt="Menu Guía"></a>
+        <div class="title">Menu Guía</div>
+      </div>
+      <div>
+        <a href="#img6"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menuarmor.png" alt="Menu Armor"></a>
+        <div class="title">Menu Armor</div>
+      </div>
+      <div>
+        <a href="#img7"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menuskin.png" alt="Menu Skin"></a>
+        <div class="title">Menu Skin</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para cada imagen -->
+  <div id="img1" class="modal">
+    <div class="modal-content">
+      <a href="#" class="close">&times;</a>
+      <a href="#img7" class="prev">&#60;</a>
+      <a href="#img2" class="next">&#62;</a>
+      <div class="modal-title">Spawn</div>
+      <img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/spawn.png" alt="Spawn">
+    </div>
+  </div>
+  <div id="img2" class="modal">
+    <div class="modal-content">
+      <a href="#" class="close">&times;</a>
+      <a href="#img1" class="prev">&#60;</a>
+      <a href="#img3" class="next">&#62;</a>
+      <div class="modal-title">Menu Principal</div>
+      <img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menuprincipal.png" alt="Menu Principal">
+    </div>
+  </div>
+  <div id="img3" class="modal">
+    <div class="modal-content">
+      <a href="#" class="close">&times;</a>
+      <a href="#img2" class="prev">&#60;</a>
+      <a href="#img4" class="next">&#62;</a>
+      <div class="modal-title">Home</div>
+      <img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menuhome.png" alt="Home">
+    </div>
+  </div>
+  <div id="img4" class="modal">
+    <div class="modal-content">
+      <a href="#" class="close">&times;</a>
+      <a href="#img3" class="prev">&#60;</a>
+      <a href="#img5" class="next">&#62;</a>
+      <div class="modal-title">Menu Bags</div>
+      <img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menubags.png" alt="Menu Bags">
+    </div>
+  </div>
+  <div id="img5" class="modal">
+    <div class="modal-content">
+      <a href="#" class="close">&times;</a>
+      <a href="#img4" class="prev">&#60;</a>
+      <a href="#img6" class="next">&#62;</a>
+      <div class="modal-title">Menu Guía</div>
+      <img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menuguia.png" alt="Menu Guía">
+    </div>
+  </div>
+  <div id="img6" class="modal">
+    <div class="modal-content">
+      <a href="#" class="close">&times;</a>
+      <a href="#img5" class="prev">&#60;</a>
+      <a href="#img7" class="next">&#62;</a>
+      <div class="modal-title">Menu Armor</div>
+      <img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menuarmor.png" alt="Menu Armor">
+    </div>
+  </div>
+  <div id="img7" class="modal">
+    <div class="modal-content">
+      <a href="#" class="close">&times;</a>
+      <a href="#img6" class="prev">&#60;</a>
+      <a href="#img1" class="next">&#62;</a>
+      <div class="modal-title">Menu Skin</div>
+      <img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menuskin.png" alt="Menu Skin">
+    </div>
   </div>
 </body>
 </html>
