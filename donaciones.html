@@ -2,86 +2,241 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <title>Donaciones - Argentumcraft</title>
+  <!-- Fuente pixelada -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap">
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
       font-family: 'Press Start 2P', cursive;
-      background-color: black;
-      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
+
+    /* ===== Barra superior común ===== */
     .top-bar {
-      background-color: #333;
-      padding: 10px;
+      width: 100%;
+      background-color: #222;
+      padding: 20px 15px;
       text-align: center;
-      position: relative;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
     }
+
     h1 {
-      margin: 0;
-      display: inline-block;
+      font-size: clamp(1.2rem, 5vw, 2.2rem);
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 0 #555;
+      margin-bottom: 15px;
+      word-break: break-word;
     }
+
     .nav-bar {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      margin-top: 10px;
+      align-items: center;
+      gap: 12px;
     }
+
     .nav-bar a {
-      color: white;
+      color: #fff;
       text-decoration: none;
-      margin: 0 15px;
+      background-color: #444;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      transition: background-color 0.3s, transform 0.2s;
+      white-space: nowrap;
+      border: 1px solid #666;
     }
+
+    .nav-bar a:hover,
+    .nav-bar a:active {
+      background-color: #8b5e3c;
+      transform: scale(1.05);
+      border-color: #c0a080;
+    }
+
+    /* ===== Contenido ===== */
     .content {
-      text-align: center;
-      margin: 20px auto;
-      padding: 20px;
-      max-width: 600px;
+      width: 90%;
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 25px 20px;
       background-color: #222;
-      border-radius: 8px;
+      border-radius: 12px;
+      text-align: center;
     }
+
+    h2 {
+      font-size: clamp(1rem, 4vw, 1.8rem);
+      margin-bottom: 20px;
+      color: #ddd;
+      text-shadow: 1px 1px 0 #444;
+    }
+
+    .content > p {
+      font-size: 0.7rem;
+      line-height: 1.8;
+      margin-bottom: 30px;
+      color: #ccc;
+    }
+
     .donation-options {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
     }
+
     .donation-option {
-      background-color: #444;
-      padding: 15px;
-      border-radius: 8px;
+      background-color: #333;
+      padding: 20px 15px;
+      border-radius: 10px;
       text-align: center;
       color: white;
       width: 200px;
+      max-width: 100%;
+      flex: 1 1 180px;
+      border: 1px solid #555;
+      transition: transform 0.2s;
     }
+
+    .donation-option:hover {
+      transform: translateY(-3px);
+      border-color: #c0a080;
+    }
+
     .donation-option h3 {
-      margin: 10px 0;
+      font-size: 0.8rem;
+      margin: 5px 0 10px;
+      color: #ffd966;
     }
+
+    .donation-option p {
+      font-size: 0.7rem;
+      margin-bottom: 15px;
+      color: #aaa;
+    }
+
     .donation-option button {
-      padding: 10px;
+      padding: 12px 15px;
       font-family: 'Press Start 2P', cursive;
+      font-size: 0.65rem;
       background-color: #4CAF50;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s, transform 0.2s;
+      text-transform: uppercase;
     }
+
     .donation-option button:hover {
       background-color: #45a049;
+      transform: scale(1.02);
+    }
+
+    .donation-option button:active {
+      transform: scale(0.98);
+    }
+
+    /* ===== Adaptaciones para celulares ===== */
+    @media (max-width: 600px) {
+      .top-bar {
+        padding: 18px 10px;
+      }
+
+      .nav-bar {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav-bar a {
+        display: block;
+        width: 80%;
+        max-width: 250px;
+        margin: 0 auto;
+        font-size: 0.75rem;
+        padding: 12px 10px;
+        text-align: center;
+      }
+
+      .content {
+        width: 95%;
+        margin: 20px auto;
+        padding: 20px 15px;
+      }
+
+      .donation-options {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .donation-option {
+        width: 90%;
+        max-width: 280px;
+        flex: none;
+      }
+
+      .donation-option h3 {
+        font-size: 0.9rem;
+      }
+
+      .donation-option p {
+        font-size: 0.75rem;
+      }
+
+      .donation-option button {
+        font-size: 0.7rem;
+        padding: 14px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      h1 {
+        font-size: 1rem;
+      }
+
+      .nav-bar a {
+        font-size: 0.65rem;
+        padding: 10px 6px;
+        width: 90%;
+      }
+
+      .content > p {
+        font-size: 0.6rem;
+      }
+
+      .donation-option {
+        width: 95%;
+      }
     }
   </style>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap">
 </head>
 <body>
   <div class="top-bar">
     <h1>Argentumcraft</h1>
-    <div class="nav-bar">
+    <nav class="nav-bar">
       <a href="index.html">Inicio</a>
-      <a href="tutoriales.html">Tutoriales</a>
+      <!-- Enlace a Tutoriales eliminado -->
       <a href="capturas.html">Capturas de pantalla</a>
       <a href="donaciones.html">Donaciones</a>
-    </div>
+    </nav>
   </div>
+
   <div class="content">
     <h2>Donaciones</h2>
     <p>Apoya el servidor y obtén monedas en el juego. ¡Gracias por ayudarnos a crecer!</p>
