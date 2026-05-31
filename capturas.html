@@ -2,65 +2,122 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <title>Capturas de pantalla - Argentumcraft</title>
+  <!-- Fuente pixelada -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap">
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
       font-family: 'Press Start 2P', cursive;
-      background-color: black;
-      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
+
+    /* ===== Barra superior común ===== */
     .top-bar {
-      background-color: #333;
-      padding: 10px;
+      width: 100%;
+      background-color: #222;
+      padding: 20px 15px;
       text-align: center;
-      position: relative;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
     }
+
     h1 {
-      margin: 0;
-      display: inline-block;
+      font-size: clamp(1.2rem, 5vw, 2.2rem);
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 0 #555;
+      margin-bottom: 15px;
+      word-break: break-word;
     }
+
     .nav-bar {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      margin-top: 10px;
+      align-items: center;
+      gap: 12px;
     }
+
     .nav-bar a {
-      color: white;
+      color: #fff;
       text-decoration: none;
-      margin: 0 15px;
+      background-color: #444;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      transition: background-color 0.3s, transform 0.2s;
+      white-space: nowrap;
+      border: 1px solid #666;
     }
+
+    .nav-bar a:hover,
+    .nav-bar a:active {
+      background-color: #8b5e3c;
+      transform: scale(1.05);
+      border-color: #c0a080;
+    }
+
+    /* ===== Contenido ===== */
     .content {
-      padding: 20px;
+      width: 100%;
+      padding: 20px 15px;
+      flex: 1;
     }
+
+    h2 {
+      font-size: clamp(1rem, 4vw, 1.8rem);
+      text-align: center;
+      margin-bottom: 30px;
+      color: #ddd;
+      text-shadow: 1px 1px 0 #444;
+    }
+
     .gallery {
       display: flex;
       flex-direction: column;
-      gap: 30px; /* Aumentamos el espacio entre las imágenes */
+      gap: 30px;
       align-items: center;
     }
-    .gallery img {
-      width: 90%;
+
+    .gallery-item {
+      width: 100%;
       max-width: 400px;
+    }
+
+    .gallery img {
+      width: 100%;
       height: auto;
       border: 2px solid white;
+      border-radius: 4px;
       transition: transform 0.3s ease;
       cursor: pointer;
+      display: block;
+      margin: 0 auto;
     }
+
     .gallery img:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
+
     .gallery .title {
       color: #ccc;
       text-align: center;
-      margin-top: 15px; /* Mayor espacio entre la imagen y el título */
-      font-size: 18px;
-      font-weight: bold; /* Hacemos el título un poco más llamativo */
+      margin-top: 12px;
+      font-size: clamp(0.65rem, 2.5vw, 1rem);
+      font-weight: bold;
     }
 
-    /* Estilo del modal */
+    /* ===== Modal (lightbox con :target) ===== */
     .modal {
       display: none;
       position: fixed;
@@ -69,100 +126,220 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.85);
       justify-content: center;
       align-items: center;
     }
-    .modal-content {
-      position: relative;
-      text-align: center;
-    }
-    .modal img {
-      width: 90%;
-      max-width: 800px;
-      height: auto;
-    }
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 40px;
-      color: white;
-      cursor: pointer;
-    }
-    .prev, .next {
-      position: absolute;
-      top: 50%;
-      font-size: 30px;
-      color: white;
-      text-decoration: none;
-      cursor: pointer;
-      z-index: 100;
-    }
-    .prev {
-      left: 10px;
-    }
-    .next {
-      right: 10px;
-    }
+
     .modal:target {
       display: flex;
     }
-    /* Estilo del título dentro del modal */
+
+    .modal-content {
+      position: relative;
+      text-align: center;
+      width: 90%;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .modal img {
+      width: 100%;
+      height: auto;
+      border: 2px solid white;
+      border-radius: 4px;
+    }
+
+    .close {
+      position: absolute;
+      top: -10px;
+      right: 0;
+      font-size: 2.5rem;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      line-height: 1;
+      z-index: 10;
+      text-shadow: 2px 2px 0 #000;
+    }
+
+    .prev,
+    .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      z-index: 10;
+      background-color: rgba(0,0,0,0.5);
+      padding: 10px;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+
+    .prev {
+      left: -10px;
+    }
+
+    .next {
+      right: -10px;
+    }
+
     .modal-title {
-      font-size: 24px;
+      font-size: clamp(1rem, 5vw, 1.8rem);
       color: #fff;
       margin-bottom: 15px;
+      text-shadow: 1px 1px 0 #000;
+    }
+
+    /* ===== Adaptaciones para celulares ===== */
+    @media (max-width: 600px) {
+      .top-bar {
+        padding: 18px 10px;
+      }
+
+      .nav-bar {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav-bar a {
+        display: block;
+        width: 80%;
+        max-width: 250px;
+        margin: 0 auto;
+        font-size: 0.75rem;
+        padding: 12px 10px;
+        text-align: center;
+      }
+
+      .content {
+        padding: 15px 10px;
+      }
+
+      .gallery {
+        gap: 25px;
+      }
+
+      .gallery-item {
+        max-width: 90%;
+      }
+
+      .modal-content {
+        width: 95%;
+      }
+
+      .prev,
+      .next {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+        padding: 5px;
+      }
+
+      .prev {
+        left: -5px;
+      }
+
+      .next {
+        right: -5px;
+      }
+
+      .close {
+        font-size: 2rem;
+        top: -5px;
+        right: -5px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      h1 {
+        font-size: 1rem;
+      }
+
+      .nav-bar a {
+        font-size: 0.65rem;
+        padding: 10px 6px;
+        width: 90%;
+      }
+
+      .gallery .title {
+        font-size: 0.7rem;
+      }
+
+      .modal-title {
+        font-size: 1rem;
+      }
+
+      .prev,
+      .next {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+      }
     }
   </style>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap">
 </head>
 <body>
   <div class="top-bar">
     <h1>Argentumcraft</h1>
-    <div class="nav-bar">
+    <nav class="nav-bar">
       <a href="index.html">Inicio</a>
-      <a href="tutoriales.html">Tutoriales</a>
+      <!-- Enlace a Tutoriales eliminado -->
       <a href="capturas.html">Capturas de pantalla</a>
       <a href="donaciones.html">Donaciones</a>
-    </div>
+    </nav>
   </div>
+
   <div class="content">
     <h2>Capturas de pantalla</h2>
     <div class="gallery">
-      <!-- Enlaces a las imágenes con id para modal -->
-      <div>
+      <!-- Imagen 1 -->
+      <div class="gallery-item">
         <a href="#img1"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/spawn.png" alt="Spawn"></a>
         <div class="title">Spawn</div>
       </div>
-      <div>
+      <!-- Imagen 2 -->
+      <div class="gallery-item">
         <a href="#img2"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menuprincipal.png" alt="Menu Principal"></a>
         <div class="title">Menu Principal</div>
       </div>
-      <div>
+      <!-- Imagen 3 -->
+      <div class="gallery-item">
         <a href="#img3"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menuhome.png" alt="Home"></a>
         <div class="title">Home</div>
       </div>
-      <div>
+      <!-- Imagen 4 -->
+      <div class="gallery-item">
         <a href="#img4"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menubags.png" alt="Menu Bags"></a>
         <div class="title">Menu Bags</div>
       </div>
-      <div>
+      <!-- Imagen 5 -->
+      <div class="gallery-item">
         <a href="#img5"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menuguia.png" alt="Menu Guía"></a>
         <div class="title">Menu Guía</div>
       </div>
-      <div>
+      <!-- Imagen 6 -->
+      <div class="gallery-item">
         <a href="#img6"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menuarmor.png" alt="Menu Armor"></a>
         <div class="title">Menu Armor</div>
       </div>
-      <div>
+      <!-- Imagen 7 -->
+      <div class="gallery-item">
         <a href="#img7"><img src="https://raw.githubusercontent.com/Argentumcraft/Argentumcraft.github.io/refs/heads/main/menuskin.png" alt="Menu Skin"></a>
         <div class="title">Menu Skin</div>
       </div>
     </div>
   </div>
 
-  <!-- Modal para cada imagen -->
+  <!-- Modales -->
   <div id="img1" class="modal">
     <div class="modal-content">
       <a href="#" class="close">&times;</a>
