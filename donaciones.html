@@ -72,7 +72,7 @@
       width: 90%;
       max-width: 700px;
       margin: 30px auto;
-      padding: 25px 20px;
+      padding: 30px 20px;
       background-color: #222;
       border-radius: 12px;
       text-align: center;
@@ -85,71 +85,41 @@
       text-shadow: 1px 1px 0 #444;
     }
 
-    .content > p {
+    .info-text {
       font-size: 0.7rem;
-      line-height: 1.8;
-      margin-bottom: 30px;
+      line-height: 2;
       color: #ccc;
+      margin-bottom: 30px;
     }
 
-    .donation-options {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .donation-option {
-      background-color: #333;
-      padding: 20px 15px;
-      border-radius: 10px;
-      text-align: center;
-      color: white;
-      width: 200px;
-      max-width: 100%;
-      flex: 1 1 180px;
-      border: 1px solid #555;
-      transition: transform 0.2s;
-    }
-
-    .donation-option:hover {
-      transform: translateY(-3px);
-      border-color: #c0a080;
-    }
-
-    .donation-option h3 {
-      font-size: 0.8rem;
-      margin: 5px 0 10px;
+    .info-text strong {
       color: #ffd966;
     }
 
-    .donation-option p {
-      font-size: 0.7rem;
-      margin-bottom: 15px;
-      color: #aaa;
-    }
-
-    .donation-option button {
-      padding: 12px 15px;
+    .donate-button {
+      display: inline-block;
+      padding: 16px 30px;
       font-family: 'Press Start 2P', cursive;
-      font-size: 0.65rem;
+      font-size: 0.8rem;
       background-color: #4CAF50;
       color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      width: 100%;
+      text-decoration: none;
+      border-radius: 8px;
       transition: background-color 0.3s, transform 0.2s;
       text-transform: uppercase;
+      border: 2px solid #6ab04c;
+      box-shadow: 0 4px 0 #2e7d32;
     }
 
-    .donation-option button:hover {
+    .donate-button:hover {
       background-color: #45a049;
-      transform: scale(1.02);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #2e7d32;
     }
 
-    .donation-option button:active {
-      transform: scale(0.98);
+    .donate-button:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #2e7d32;
     }
 
     /* ===== Adaptaciones para celulares ===== */
@@ -179,29 +149,11 @@
         padding: 20px 15px;
       }
 
-      .donation-options {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-      }
-
-      .donation-option {
-        width: 90%;
-        max-width: 280px;
-        flex: none;
-      }
-
-      .donation-option h3 {
-        font-size: 0.9rem;
-      }
-
-      .donation-option p {
+      .donate-button {
         font-size: 0.75rem;
-      }
-
-      .donation-option button {
-        font-size: 0.7rem;
-        padding: 14px;
+        padding: 14px 20px;
+        width: 100%;
+        max-width: 300px;
       }
     }
 
@@ -216,12 +168,13 @@
         width: 90%;
       }
 
-      .content > p {
+      .info-text {
         font-size: 0.6rem;
       }
 
-      .donation-option {
-        width: 95%;
+      .donate-button {
+        font-size: 0.7rem;
+        padding: 12px 15px;
       }
     }
   </style>
@@ -231,7 +184,6 @@
     <h1>Argentumcraft</h1>
     <nav class="nav-bar">
       <a href="index.html">Inicio</a>
-      <!-- Enlace a Tutoriales eliminado -->
       <a href="capturas.html">Capturas de pantalla</a>
       <a href="donaciones.html">Donaciones</a>
     </nav>
@@ -239,42 +191,12 @@
 
   <div class="content">
     <h2>Donaciones</h2>
-    <p>Apoya el servidor y obtén monedas en el juego. ¡Gracias por ayudarnos a crecer!</p>
-    <div class="donation-options">
-      <div class="donation-option">
-        <h3>500 Coins</h3>
-        <p>$5 USD</p>
-        <form action="https://www.paypal.me/maxicf" method="post" target="_blank">
-          <input type="hidden" name="business" value="tu_correo@ejemplo.com">
-          <input type="hidden" name="item_name" value="500 Coins en Argentumcraft">
-          <input type="hidden" name="amount" value="5.00">
-          <input type="hidden" name="currency_code" value="USD">
-          <button type="submit">Donar</button>
-        </form>
-      </div>
-      <div class="donation-option">
-        <h3>1000 Coins</h3>
-        <p>$10 USD</p>
-        <form action="https://www.paypal.com/donate" method="post" target="_blank">
-          <input type="hidden" name="business" value="tu_correo@ejemplo.com">
-          <input type="hidden" name="item_name" value="1000 Coins en Argentumcraft">
-          <input type="hidden" name="amount" value="10.00">
-          <input type="hidden" name="currency_code" value="USD">
-          <button type="submit">Donar</button>
-        </form>
-      </div>
-      <div class="donation-option">
-        <h3>2500 Coins</h3>
-        <p>$25 USD</p>
-        <form action="https://www.paypal.com/donate" method="post" target="_blank">
-          <input type="hidden" name="business" value="tu_correo@ejemplo.com">
-          <input type="hidden" name="item_name" value="2500 Coins en Argentumcraft">
-          <input type="hidden" name="amount" value="25.00">
-          <input type="hidden" name="currency_code" value="USD">
-          <button type="submit">Donar</button>
-        </form>
-      </div>
-    </div>
+    <p class="info-text">
+      Apoya al servidor y recibe <strong>Argentum</strong>, la moneda del juego.<br>
+      La conversión es simple: <strong>1 USD = 1 Argentum</strong>.<br>
+      Puedes donar desde <strong>1 Argentum</strong> (1 USD) o la cantidad que desees.
+    </p>
+    <a href="https://www.paypal.me/maxicf" target="_blank" class="donate-button">Donar con PayPal</a>
   </div>
 </body>
 </html>
